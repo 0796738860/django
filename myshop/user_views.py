@@ -21,22 +21,23 @@ def register_user(request):
     )
 
 def login_user(request):
+    if request.user.is_authenticated:
+        return redirect('__base.html')
     form = LoginForm()
     message = ""
     if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         form = LoginForm(request.POST)
         if form.is_valid():
-            # Hàm authenticate('username', 'password')
-            # Xác thực khi username/password cung cấp là đúng -> trả về 1 object/instance từ class User
             user = authenticate(
-                username = form.cleaned_data['username'],
-                password = form.cleaned_data['password']
+                request,
+                username = username,
+                password = password
             )
-            if user:
-                # Xác thực thành công
-                print('Bạn đã xác thực thành công') # Mới xác thực
-                # Chưa có đăng nhập
-                login(request=request, user=user) # Login/giữ trạng thái đăng nhập thành công
+            if user is not None:
+                print('Bạn đã xác thực thành công')
+                login(request=request, user=user)
                 if request.GET.get('next'):
                     return HttpResponseRedirect(request.GET['next'])
                 return redirect('index')
@@ -48,6 +49,22 @@ def login_user(request):
         context={
             'form': form,
             'message': message
+        }
+    )
+
+def change_password(request):
+    form = PasswordChangeForm(user=request.user)
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(
+        request=request,
+        template_name='user/change_password.html',
+        context={
+            'form': form,
+
         }
     )
 
