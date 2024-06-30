@@ -113,11 +113,11 @@
 							<span>
 								<span>
 									{% if product_data.id|check_product_sale %}
-										<a style="text-decoration:line-through; color:blueviolet; font-size: 50%; ">{{product_data.price|intcomma}} VND</a>
+										<a style="text-decoration:line-through; color:blueviolet; font-size: 50%; ">{{product_data.price|intcomma}} VNĐ</a>
 										<br>
-										<a>{{product_data.id|get_price_sale|intcomma}} VND</a>
+										<a>{{product_data.id|get_price_sale|intcomma}} VNĐ</a>
 									{% else %}
-										<a>{{product_data.price|intcomma}} VND</a>
+										<a>{{product_data.price|intcomma}} VNĐ</a>
 									{% endif %}
 								</span>
 								<br>

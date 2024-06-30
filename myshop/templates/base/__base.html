@@ -79,12 +79,12 @@
 							<ul class="nav navbar-nav">
 								{% if user.is_authenticated %}
 										<li><a href="#"><i class="fa fa-user"></i> Welcome <b>{{ user.username }}</b></a></li>
-										<li><a href="{% url 'show_cart' %}"><i class="fa fa-shopping-cart"></i> Cart <sup class="badge">{{user|count_product_in_card}}</sup></a></li>
+										<li><a href="{% url 'show_cart' %}"><i class="fa fa-shopping-cart"></i> Giỏ hàng <sup class="badge">{{user|count_product_in_card}}</sup></a></li>
 										<li><a href="{% url 'logout_user' %}"><i class="fa fa-lock"></i> Logout</a></li>
 									{% else %}
 										<li><a href="#"><i class="fa fa-user"></i> Welcome </a></li>
-										<li><a href="{% url 'show_cart' %}"><i class="fa fa-shopping-cart"></i> Cart </a></li>
-										<li><a href="{% url 'login_user' %}"><i class="fa fa-lock"></i> Login</a></li>
+										<li><a href="{% url 'show_cart' %}"><i class="fa fa-shopping-cart"></i> Giở hàng </a></li>
+										<li><a href="{% url 'login_user' %}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
 									{% endif %}
 							</ul>
 						</div>

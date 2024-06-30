@@ -31,14 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+   
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'myapp.apps.MyappConfig',
-    # 'myapi.apps.MyapiConfig',
+    'myapp.apps.MyappConfig',
+    'myapi.apps.MyapiConfig',
     'myshop.apps.MyshopConfig',
     'django.contrib.humanize'
 ]
@@ -79,8 +81,11 @@ WSGI_APPLICATION = 'myweb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'web',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',    
     }
 }
 

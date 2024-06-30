@@ -9,12 +9,13 @@
         {% load static %}
         <div class="row">
             <div class="col-sm-8">
-                <img class="img-fluid" src="{% static 'images/django.png' %}" alt="" width="100%">
+                <img class="img-fluid" src="{% static 'images/1.png' %}" alt="" width="100%">
             </div>
             <div class="col-sm-4">
                 {% if message %}
                     <h1 style="color: red">{{message}}</h1>
                 {% endif %}
+                <br><br>
                 <form action="" method="post" class="needs-validation" novalidate>
                     {% csrf_token %}
                     {% for field in form %}
@@ -23,10 +24,12 @@
                             {{ field }}
                         </div>
                     {% endfor %}
-                    <input type="submit" class="btn btn-success btn-lg btn-block" value="Sign In">
+                    <input type="submit" class="btn btn-success btn-lg btn-block" value="Đăng nhập">
+                    <br>
                 </form>
-                <p>Bạn chưa có tài khoản <a href="{% url 'register_user' %}">Bấm vào đây để tạo</a></p>
+                <p>Bạn chưa có tài khoản!!<a href="{% url 'register_user' %}">Bấm vào đây để đăng ký tài khoản</a></p>
             </div>
         </div>
 </div>
+<br><br><br>
 {% endblock content %}
